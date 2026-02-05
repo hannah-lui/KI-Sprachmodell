@@ -203,20 +203,22 @@ st.set_page_config(page_title="Eigenes Sprachmodell", layout="wide")
 st.title("Eigenes Sprachmodell")
 
 st.info(
-    "Hier kannst du dein eigenes einfaches Sprachmodell aufbauen. "
-    "Es analysiert deinen Text und bestimmt, welche Wörter typischerweise aufeinander folgen. "
-    "Anschließend kann dein Modell neue Sätze erzeugen, indem es diese Übergänge nutzt."
+    "Hier kannst du dein eigenes kleines Sprachmodell aufbauen. "
+    "Es analysiert deinen Text und bestimmt für dich die Übgergangstabelle. "
+    "Mit den Parametern kannst du varieren, wie dein Modell arbeitet."
 )
 
-st.subheader("1. Text eingeben")
+st.subheader("1. Trainingstext")
 text = st.text_area(
-    "Dein Trainings-Text",
+    "Du kannst den Text beliebig verändern. Ergänze noch die Liedtexte von anderen Liedern. Wichitg ist, dass ein . am Satzende steht.",
     value=(
-        "Das ist ein Beispieltext. "
-        "Du kannst hier deinen Text einfügen. "
-        "Der Generator lernt, welche Wörter oft aufeinander folgen. "
-        "Wenn ein Satz endet, fängt ein neuer an. " 
-    ),
+        "Ich glaub, ich will heut nicht mehr geh'n. Ich hab dich viel zu kurz geseh'n. Und überhaupt, draußen ist's kalt, zu kalt. Und an dein'n Fensterecken blüht das Eis. Ich will, dass du gar nichts machst, gar nichts machst. Will mit dir den ganzen Tag, sag alles ab. In meinem Bett ist so viel Platz und mir ist kalt. Doch auf deinem Screen ist Portugal. Denn du willst viel vom Leben, glaub an dich. Ey, deine Ziele sind zu ambitioniert für mich. Du inspirierst, doch bitte sei heute faul für mich. All meine Freunde unterwegs, suchen, was wir schon sind. Ich glaub, ich will heut nicht mehr geh'n. Ich hab dich viel zu kurz geseh'n. Und überhaupt, draußen ist's kalt. Und an dein'n Fensterecken blüht das Eis. Ich glaub, ich will nie mehr nach Haus. Weil da, wo du bist, ist das auch . Komm, schließ uns ein, wir sind allein. Frag mich, ob das Gefühl für immer bleibt. Palo Santo, Herz in Brand, mach die teuren Kerzen an. Frisch geduscht, Bossa nova, verlier'n uns im Viervierteltakt. Ich les dir von den Lippen ab, weil du nur gute Seiten hast. Sitz auf deiner Fensterbank und strahl heut alle Sterne an. Ich glaub an mich, glaub an dich. Eigentlich nur wir, ansonsten brauch ich nichts, brauch nur dich. Mach keine Pläne, bitte sei heute faul für mich. All meine Leute unterwegs, suchen, was wir schon sind. Ich glaub, ich will heut nicht mehr geh'n. Ich hab dich viel zu kurz geseh'n. Und überhaupt, draußen ist's kalt, zu kalt. Und an dein'n Fensterecken blüht das Eis. Ich glaub, ich will heut nicht mehr geh'n. Ich hab dich viel zu kurz geseh'n. Und überhaupt, draußen ist's kalt. Und an dein'n Fensterecken blüht das Eis. Ich glaub, ich will nie mehr nach Haus. Weil da, wo du bist, ist das auch. Komm, schließ uns ein, wir sind allein. Frag mich, ob das Gefühl für immer bleibt. Ich glaub, ich will heut nicht mehr geh'n."
+        #"Ich will, dass ihr mir vertraut. Ich will, dass ihr mir glaubt. Ich will eure Blicke spüren. Jeden Herzschlag kontrollieren. Ich will eure Stimmen hören. Ich will die Ruhe stören. Ich will, dass ihr mich gut seht. Ich will, dass ihr mich versteht. Ich will eure Fantasie. Ich will eure Energie. Ich will eure Hände seh'n. Könnt ihr mich hören?  Könnt ihr mich seh'n? Könnt ihr mich fühlen? Ich versteh' euch nicht. Könnt ihr uns hören? Könnt ihr uns seh'n? Könnt ihr uns fühlen? Wir versteh'n euch nicht."
+        #"Ich hab′ dich lieb, so lieb, lieber als je zuvor. Ich hab' dich lieb, so lieb, ich nehm's halt mit Humor. Ich hab′ dich lieb, so lieb, lieber als je zuvor. Ich hab′ dich lieb, so lieb, ich nehm's halt mit Humor. Du wolltest dich nicht an mich binden, bin ich so ′n oller Baum. Eine Familie mit dir, das war mein Traum, doch dir war's viel zu früh. Es gibt bestimmt doch noch bessere, andere als mich. Du willst dich erst umsehen, man weiß ja nie. Doch ich hab′ dich lieb, so lieb, lieber als du denkst. Ich hab' dich lieb, so lieb, auch wenn du nicht an mir hängst. Ruf doch mal wieder an und erzähl mir, was du träumst. Ist ganz egal, wann und überrasch mich, komm her und sag, dass du bleibst. Für immer jetzt, für ewig, oder mehr. Doch Halt, ich muss wohl schon träumen, jeder hat so seinen Tick. Für deine Suche wünsch′ ich dir viel Glück. Ich hab' dich lieb, so lieb, ich hoffe, du verzeihst. Ich hab' dich lieb, so lieb, ich will nur, dass du es weißt. Ich hab′ dich lieb, so lieb, lieber als du denkst. Ich hab′ dich lieb, so lieb, auch wenn du nicht an mir hängst."
+        #"Wenn wir nachts nach Hause gehen, die Lippen blau vom Rotwein. Und wir uns bis vorne an der Ecke meine große Jacke teilen. Der Himmel wird schon morgenrot, doch du willst noch nicht schlafen. Ich hole uns die alten Räder und wir fahren zum Hafen. Ich lass für dich das Licht an, obwohl's mir zu hell ist. Ich hör mit dir Platten, die ich nicht mag. Ich bin für dich leise, wenn du zu laut bist. Renn für dich zum Kiosk, ob Nacht oder Tag. Ich lass für dich das Licht an, obwohl's mir zu hell ist. Ich schaue mir Bands an, die ich nicht mag. Ich gehe mit dir in die schlimmsten Schnulzen. Ist mir alles egal, hauptsache du bist da.Ich würde meine Lieblingsplatten sofort für dich verbrennen. Und wenn es für dich wichtig ist, bis nach Barcelona trampen.Die Morgenluft ist viel zu kalt und ich werde langsam heiser. Ich seh nur dich im Tunnelblick, und die Stadt wird langsam leiser. Ich lass für dich das Licht an, obwohl's mir zu hell ist. Ich hör mit dir Platten, die ich nicht mag. Ich bin für dich leise, wenn du zu laut bist. Renn für dich zum Kiosk, ob Nacht oder Tag. Ich lass für dich das Licht an, obwohl's mir zu hell ist. Ich schaue mir Bands an, die ich nicht mag. Ich gehe mit dir in die schlimmsten Schnulzen. Ist mir alles egal, hauptsache du bist da. Ich lass für dich das Licht an, obwohl's mir zu hell ist. Ich hör mit dir Platten, die ich nicht mag. Ich bin für dich leise, wenn du zu laut bist. Renn für dich zum Kiosk, ob Nacht oder Tag. Ich lass für dich das Licht an, obwohl's mir zu hell ist. Ich schaue mir Bands an, die ich nicht mag. Ich gehe mit dir in die schlimmsten Schnulzen. Ist mir alles egal, hauptsache du bist da. Wenn wir Nachts nach Hause gehen. Die Lippen blau vom Rotwein. Und wir uns bis vorne an der Ecke. Meine große Jacke teilen."
+        #"Und nach dem Abendessen sagte er. Lass mich noch eben Zigaretten holen gehen. Sie rief ihm nach: Nimm dir die Schlüssel mit. Ich werd' inzwischen nach der Kleinen sehen. Er zog die Tür zu, ging stumm hinaus ins neon-helle Treppenhaus. Es roch nach Bohnerwachs und Spießigkeit. Und auf der Treppe dachte er wie wenn das jetzt ein Aufbruch wär'. Ich müsste einfach gehen für alle Zeit. Ich war noch niemals in New York. Ich war noch niemals auf Hawaii. Ging nie durch San Francisco in zerrissenen Jeans. Ich war noch niemals in New York. Ich war noch niemals richtig frei. Einmal verrückt sein und aus allen Zwängen fliehen. Und als er draußen auf der Straße stand. Fiel ihm ein, dass er fast alles bei sich trug den Pass, die Euro checks und etwas Geld. Vielleicht ging heute Abend noch ein Flug. Er könnt' ein Taxi nehmen dort am Eck oder Autostop und einfach weg. Die Sehnsucht in ihm wurde wieder wach. Noch einmal voll von Träumen sein, sich aus der Enge hier befreien. Er dachte über seinen Aufbruch nach. Ich war noch niemals in New York. Ich war noch niemals auf Hawaii. Ging nie durch San Francisco in zerrissenen Jeans. Ich war noch niemals in New York. ich war noch niemals richtig frei. Einmal verrückt sein und aus allen Zwängen fliehen."
+   
+   ),
     height=220,
 )
 
@@ -225,7 +227,7 @@ with st.sidebar:
 
     modell = st.radio(
         "Kontextlänge",
-        ["2 Wörter", "3 Wörter"],
+        ["2-Gram", "3-Gram"],
         help=(
             "Die Kontextlänge gibt an, wie viele vorherige Wörter "
             "bei der Auswahl des nächsten Wortes berücksichtigt werden."
@@ -233,23 +235,22 @@ with st.sidebar:
     )
 
     zufall = st.slider(
-        "Zufall",
+        "Temperatur",
         0, 100, 20, 1,
         help="0 = wahrscheinlichstes Wort, 100 = komplett zufällig"
     )
 
     st.markdown(
         "<small>"
-        "Der Zufall entscheidet nur zwischen Wörtern,"
-        "die im Text an dieser Stelle vorkommen.<br>"
-        "α = Zufall / 100<br>"
-        "Gewicht = (1 − α) · Häufigkeit + α"
+        "Die Temperatur legt fest, wie stark Zufall bei der Wortwahl einfließt.<br>"
+        "α = Temperatur / 100<br>"
+        "Score = (1 − α) · Wahrscheinlichkeit + α"
         "</small>",
         unsafe_allow_html=True
     )
 
 
-    anzahl_vorher = 1 if modell == "2 Wörter" else 2
+    anzahl_vorher = 1 if modell == "2-Gram" else 2
     placeholder = "z. B. der" if anzahl_vorher == 1 else "z. B. der hund"
 
     satzanfang_text = st.text_input(
@@ -283,7 +284,7 @@ uebergaenge, gesamt = baue_uebergaenge(woerter, anzahl_vorher)
 colA, colB = st.columns([1, 1], gap="large")
 
 with colA:
-    st.subheader("2. Übergangswahrscheinlichkeiten")
+    st.subheader("2. Übergangstabelle")
 
     df = tabelle_bauen(uebergaenge, gesamt)
     if df.empty:
