@@ -350,3 +350,14 @@ with colB:
                     satzanfang_text
                 )
                 st.write(f"{i+1}. {s}")
+st.markdown("---")
+st.caption(
+    "Der vorgelegte Trainingstext setzt sich aus Ausschnitten folgender Lieder zusammen: "
+    "„Ich glaub ich will heut nicht mehr“ (Nina Chuba und Provinz), "
+    "„Ich will“ (Rammstein), "
+    "„Ich hab dich lieb“ (Herbert Grönemeyer), "
+    "„Ich lass für dich das Licht an“ (Revolverheld) "
+    "und „Ich war noch niemals in New York“ (Udo Jürgens). "
+    "Die Texte werden ausschließlich zu Demonstrations- und Lernzwecken verwendet."
+)
+
