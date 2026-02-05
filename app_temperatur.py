@@ -294,7 +294,14 @@ with st.sidebar:
 
 
 # Intern: feste Zufallsquelle (keine Extra-Einstellung für Schüler)
-rng = random.Random(1)
+#rng = random.Random(1)
+
+# Intern: Zufallsquelle (bleibt über Streamlit-Reruns hinweg erhalten)
+if "rng" not in st.session_state:
+    st.session_state.rng = random.Random()  # kein fester Seed
+
+rng = st.session_state.rng
+
 
 woerter = text_zu_woertern(text)
 uebergaenge, gesamt = baue_uebergaenge(woerter, anzahl_vorher)
