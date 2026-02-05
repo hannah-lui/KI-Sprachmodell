@@ -202,6 +202,16 @@ def satz_erzeugen(
 st.set_page_config(page_title="Eigenes Sprachmodell", layout="wide")
 st.title("Eigenes Sprachmodell")
 
+# -----------------------------
+# Session State
+# -----------------------------
+if "generated_sentences" not in st.session_state:
+    st.session_state.generated_sentences = []
+
+if "last_model" not in st.session_state:
+    st.session_state.last_model = None
+
+
 st.info(
     "Hier kannst du dein eigenes kleines Sprachmodell aufbauen. "
     "Es analysiert deinen Text und bestimmt für dich die Übgergangstabelle. "
@@ -233,6 +243,14 @@ with st.sidebar:
             "bei der Auswahl des nächsten Wortes berücksichtigt werden."
         )
     )
+
+    # Wenn Modell gewechselt wurde: generierte Sätze löschen
+    if st.session_state.last_model is None:
+        st.session_state.last_model = modell
+    elif st.session_state.last_model != modell:
+        st.session_state.generated_sentences = []
+        st.session_state.last_model = modell
+
 
     zufall = st.slider(
         "Temperatur",
@@ -340,6 +358,9 @@ with colB:
         if fehler:
             st.error(fehler)
         else:
+            # Nur hier löschen/neu erzeugen:
+            st.session_state.generated_sentences = []
+
             for i in range(int(anzahl_saetze)):
                 s = satz_erzeugen(
                     uebergaenge,
@@ -349,7 +370,13 @@ with colB:
                     rng,
                     satzanfang_text
                 )
-                st.write(f"{i+1}. {s}")
+                st.session_state.generated_sentences.append(s)
+
+    # Anzeige: bleibt bei Suche/sonstigen Änderungen erhalten
+    if st.session_state.generated_sentences:
+        for i, s in enumerate(st.session_state.generated_sentences, start=1):
+            st.write(f"{i}. {s}")
+
 st.markdown("---")
 st.caption(
     "Der vorgelegte Trainingstext setzt sich aus Ausschnitten folgender Lieder zusammen: "
